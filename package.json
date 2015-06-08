@@ -1,0 +1,27 @@
+{
+  "name": "d-subcomponents",
+  "version": "1.1.0",
+  "description": "Derby plugin for easily adding subcomponents without access to app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "derby": "^0.6.0-alpha31"
+  },
+  "author": "cjblomqvist <carl@cjblomqvist.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/BBWeb/d-subcomponents.git"
+  },
+  "keywords": [
+    "derby",
+    "plugin"
+  ],
+  "bugs": {
+    "url": "https://github.com/BBWeb/d-subcomponents/issues"
+  },
+  "homepage": "https://github.com/BBWeb/d-subcomponents",
+  "readmeFilename": "README.md"
+}
