@@ -77,11 +77,19 @@ module.exports = function (derby, options) {
     // component's init method. This means that we don't have to rely on users
     // properly calling the Component constructor method and avoids having to
     // play nice with how CoffeeScript extends class constructors
-    emitHooks(context, component);
+    emitInitHooks(context, component);
     component.emit('init', component);
     if (component.init) component.init(model);
 
     return componentContext;
+  }
+
+  function emitInitHooks(context, component) {
+    if (!context.initHooks) return;
+    // Run initHooks for `on` listeners immediately before init
+    for (var i = 0, len = context.initHooks.length; i < len; i++) {
+      context.initHooks[i].emit(context, component);
+    }
   }
 
   function setAttributes(context, model) {
@@ -95,18 +103,10 @@ module.exports = function (derby, options) {
         attribute.expression.pathSegments(context)
       );
       if (segments) {
-        model.root.ref(model._at + '.' + key, segments.join('.'));
+        model.root.ref(model._at + '.' + key, segments.join('.'), {updateIndices: true});
       } else {
         model.set(key, attribute);
       }
-    }
-  }
-
-  function emitHooks(context, component) {
-    if (!context.hooks) return;
-    // Kick off hooks if view pointer specified `on` or `as` attributes
-    for (var i = 0, len = context.hooks.length; i < len; i++) {
-      context.hooks[i].emit(context, component);
     }
   }
 
@@ -150,17 +150,8 @@ module.exports = function (derby, options) {
     this.component = null;
   }
   SingletonComponentFactory.prototype.init = function(context) {
-    var componentContext;
-    if (this.component) {
-      componentContext = context.componentChild(this.component);
-      emitHooks(context, this.component);
-    } else {
-      this.component = new this.constructor();
-      var parent = context.controller.page;
-      var model = parent.model;
-      componentContext = initComponent(context, this.component, parent, model);
-    }
-    return componentContext;
+    if (!this.component) this.component = new this.constructor();
+    return context.componentChild(this.component);
   };
   // Don't call the create method for singleton components
   SingletonComponentFactory.prototype.create = function() {};
