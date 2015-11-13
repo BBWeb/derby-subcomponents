@@ -1,6 +1,6 @@
 var path = require('path');
-var util = require('derby/node_modules/racer/lib/util');
-var derbyTemplates = require('derby/node_modules/derby-templates');
+var util = require('racer/lib/util');
+var derbyTemplates = require('derby-templates');
 var templates = derbyTemplates.templates;
 
 var Component = require('derby/lib/components').Component;
