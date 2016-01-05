@@ -1,6 +1,6 @@
 {
   "name": "derby-subcomponents",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Derby plugin for easily adding subcomponents without access to app",
   "main": "index.js",
   "scripts": {
