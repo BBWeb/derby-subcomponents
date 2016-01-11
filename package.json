@@ -10,7 +10,7 @@
     "racer": "0.7.0 - 0.8"
   },
   "peerDependencies": {
-    "derby": "^0.7.0",
+    "derby": "^0.7.0 - 0.8",
     "derby-templates": "^0.3.3"
   },
   "author": "cjblomqvist <carl@cjblomqvist.com>",
