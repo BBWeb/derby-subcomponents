@@ -7,10 +7,10 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "racer": "0.7.0 - 0.8"
+    "racer": ">=0.7.0 <0.9"
   },
   "peerDependencies": {
-    "derby": "^0.7.0 - 0.8",
+    "derby": ">=0.7.0 <0.9",
     "derby-templates": "^0.3.3"
   },
   "author": "cjblomqvist <carl@cjblomqvist.com>",
